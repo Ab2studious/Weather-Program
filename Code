@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+// Function to calculate wind chill
+double calculateWindChill(double temperature, double windSpeed) {
+    return 35.74 + (0.6215 * temperature) - (35.75 * pow(windSpeed, 0.16)) + (0.4275 * temperature * pow(windSpeed, 0.16));
+}
+
+// Function to calculate cloud base
+double calculateCloudBase(double dewPoint) {
+    return 125 * (dewPoint - 32);
+}
+
+int main() {
+    double temperature, windSpeed, dewPoint;
+
+    // Input: Current temperature in Fahrenheit and wind speed in mph
+    cout << "Enter the current temperature in Fahrenheit: ";
+    cin >> temperature;
+    cout << "Enter the wind speed in mph: ";
+    cin >> windSpeed;
+
+    // Input: Dew point in Fahrenheit
+    cout << "Enter the dew point in Fahrenheit: ";
+    cin >> dewPoint;
+
+    // Calculating wind chill
+    double windChill = calculateWindChill(temperature, windSpeed);
+    cout << "The wind chill is: " << windChill << " °F" << endl;
+
+    // Calculating cloud base
+    double cloudBase = calculateCloudBase(dewPoint);
+    cout << "The cloud base is approximately: " << cloudBase << " feet" << endl;
+
+    return 0;
+}
